@@ -31,10 +31,9 @@
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item" href="#!">Settings </a></li>
-                        <li><a class="dropdown-item" href="#!">Activity Log</a></li>
+                        <li><a class="dropdown-item" href="#!">Profil </a></li>
                         <li><hr class="dropdown-divider" /></li>
-                        <li><a class="dropdown-item" href="#!">Logout</a></li>
+                        <li><a class="dropdown-item" href="{{ route('vendors.logout') }}">Deconnexion</a></li>
                     </ul>
                 </li>
             </ul>
@@ -68,11 +67,17 @@
                                 <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
                                 Paiement
                             </a>
+
+                            <a class="nav-link" href="{{ route('payments.config') }}">
+                                <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
+                                Configurations
+                            </a>
+
                         </div>
                     </div>
                     <div class="sb-sidenav-footer">
                         <div class="small">Connection en tant :</div>
-                       {{ auth('Vendor')->user()->name }}
+                       {{ auth('Vendor')->user()->id }}
                     </div>
                 </nav>
             </div>

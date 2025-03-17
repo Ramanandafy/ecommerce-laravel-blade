@@ -2,7 +2,7 @@
 
 namespace App\Http;
 
-use App\Http\Middleware\VendorMiddleware;
+use App;
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
 
 class Kernel extends HttpKernel
@@ -25,6 +25,8 @@ class Kernel extends HttpKernel
             \Illuminate\View\Middleware\ShareErrorsFromSession::class,
             \App\Http\Middleware\VerifyCsrfToken::class,
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
+             \App\Illuminate\Cookie\Middleware\VerifierUtilisateurConnecte::class,
+             \App\Http\Middleware\VendorMiddleware::class,
         ],
         'api' => [
             'throttle:api',
@@ -38,9 +40,9 @@ class Kernel extends HttpKernel
         'can' => \Illuminate\Auth\Middleware\Authorize::class,
         'guest' => \App\Http\Middleware\RedirectIfAuthenticated::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
-        // Ajoute d'autres middlewares ici si nécessaire
-        'Vendor' => VendorMiddleware::class,
-
+        'vendor_middleware' => \App\Http\Middleware\VendorMiddleware::class, // Vérifier ici
+        'connecte' => App\Illuminate\Cookie\Middleware\VerifierUtilisateurConnecte::class,
     ];
+
 }
 

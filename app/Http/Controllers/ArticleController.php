@@ -7,12 +7,13 @@ use App\Models\Produit;
 use DB;
 use Exception;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
  class ArticleController extends Controller
 {
     public function index(){
 
-        $articles = Produit::latest()->get();
+        $articles = Produit::where('vendor_id', auth('Vendor')->user()->id)->latest()->with('image')->get();
 
     return view('dashboard.vendors.articles.index' , compact('articles'));
     }

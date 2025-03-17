@@ -26,7 +26,17 @@
 
               @foreach ($articles as $article)
               <tr>
-                <td></td>
+                <td>
+                    @if ($article->image)
+                      <div
+                          style="background-image: url('{{ asset('storage/' . $article->image->path) }}');
+                          width: 50px;
+                          height: 50px;
+                          background-position: center;
+                          background-size: cover;"  >
+                    </div>
+                    @endif
+                </td>
                 <td>{{ $article->name }}</td>
                 <td>{{ $article->price }}</td>
                 <td>{{ $article->is_active?'Disponible':'Rupture de stock' }}</td>
